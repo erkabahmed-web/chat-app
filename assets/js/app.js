@@ -344,4 +344,7 @@ backButton.addEventListener("click", showContacts);
 
 renderContacts();
 renderConversation();
+if (activeContactId && window.matchMedia("(max-width: 760px)").matches) {
+  appShell.classList.remove("show-conversation");
+}
 if (storageWarning) announce(storageWarning);
