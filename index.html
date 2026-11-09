@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <meta name="description" content="A simple, local-only demo chat application.">
+    <title>Convo — your conversations</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell" aria-label="Chat application">
+      <aside class="contacts-panel" aria-label="Conversations">
+        <header class="sidebar-header">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true">c</span>
+            <span>Convo</span>
+          </div>
+          <p class="sidebar-caption">Your messages, all in one place</p>
+        </header>
+
+        <div class="contact-tools">
+          <label class="sr-only" for="contact-search">Search contacts</label>
+          <span class="search-icon" aria-hidden="true"></span>
+          <input id="contact-search" type="search" placeholder="Search people" autocomplete="off">
+        </div>
+
+        <div class="list-heading">
+          <h1>Messages</h1>
+          <span id="contact-count" class="contact-count" aria-live="polite"></span>
+        </div>
+
+        <nav id="contact-list" class="contact-list" aria-label="Contact list"></nav>
+        <p id="contacts-empty" class="contacts-empty" hidden>No people match your search.</p>
+        <p class="local-note"><span aria-hidden="true">●</span> Stored on this device</p>
+      </aside>
+
+      <section id="chat-panel" class="chat-panel" aria-label="Active conversation">
+        <div id="empty-view" class="empty-view">
+          <div class="empty-illustration" aria-hidden="true">
+            <span class="empty-bubble empty-bubble-one"></span>
+            <span class="empty-bubble empty-bubble-two"></span>
+            <span class="empty-spark">✦</span>
+          </div>
+          <h2>Your conversations</h2>
+          <p>Choose someone from your messages to pick up where you left off.</p>
+        </div>
+
+        <div id="conversation-view" class="conversation-view" hidden>
+          <header class="conversation-header">
+            <button id="back-button" class="icon-button back-button" type="button" aria-label="Back to contacts">
+              <span aria-hidden="true">←</span>
+            </button>
+            <div id="active-avatar" class="avatar header-avatar" aria-hidden="true"></div>
+            <div class="header-person">
+              <h2 id="active-name"></h2>
+              <p>Conversation</p>
+            </div>
+            <button id="clear-button" class="clear-button" type="button" aria-label="Clear conversation">
+              <span class="trash-icon" aria-hidden="true"></span>
+              <span>Clear chat</span>
+            </button>
+          </header>
+
+          <div id="message-list" class="message-list" role="log" aria-label="Messages" aria-live="polite" aria-relevant="additions text"></div>
+          <div id="message-empty" class="message-empty" hidden>
+            <span class="empty-chat-icon" aria-hidden="true">✉</span>
+            <p>No messages here yet.</p>
+            <span>Send a message to start the conversation.</span>
+          </div>
+
+          <form id="message-form" class="message-form" novalidate>
+            <label class="sr-only" for="message-input">Write a message</label>
+            <textarea id="message-input" name="message" rows="1" maxlength="2000" placeholder="Write a message..." aria-describedby="composer-hint"></textarea>
+            <span id="composer-hint" class="sr-only">Press Enter to send. Press Shift and Enter for a new line.</span>
+            <button id="send-button" class="send-button" type="submit" aria-label="Send message" disabled>
+              <span>Send</span>
+              <span class="send-arrow" aria-hidden="true">↗</span>
+            </button>
+          </form>
+          <p class="composer-footnote">Enter to send <span aria-hidden="true">·</span> Shift + Enter for a new line</p>
+        </div>
+      </section>
+    </main>
+    <div id="app-status" class="sr-only" role="status" aria-live="polite"></div>
+  </body>
+</html>
